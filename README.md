@@ -1,2 +1,2 @@
-# twitch_viewers_list
-Displays List Of Twitch Viewers And Updates Every 10 Sec Using Twitch API
+- Twitch Channel ID Finder: https://streamscharts.com/tools/convert-username
+- Access Token & Client ID Finder: https://twitchtokengenerator.com/?code=378t7mf8oqtpceagh0scrwq2o61w89&scope=chat%3Aread+chat%3Aedit&state=frontend%7CcHFTc3ljMTNnTTB4YngwcWl3SnNaUT09
