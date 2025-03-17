@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Viewer List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #18181B;
+            color: white;
+            text-align: center;
+        }
+        #viewerList {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #9147ff;
+            border-radius: 10px;
+            width: 300px;
+            display: inline-block;
+            text-align: left;
+            background-color: #292B2F;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Live Twitch Viewers</h2>
+    <div id="viewerList">Loading...</div>
+
+    <script>
+        const CLIENT_ID = "ENTER TWITCH CLIENT ID"; // Twitch Client ID
+        const ACCESS_TOKEN = "ENTER YOUR TWITCH ACCESS TOKEN"; // OAuth Token
+        const BROADCASTER_ID = "TWITCH ID"; // Your Twitch Channel ID
+        const MODERATOR_ID = "TWITCH ID"; // Your Moderator User ID
+        const REFRESH_INTERVAL = 10000; // Update every 30 seconds
+
+        async function fetchViewers() {
+            try {
+                const url = `https://api.twitch.tv/helix/chat/chatters?broadcaster_id=${BROADCASTER_ID}&moderator_id=${MODERATOR_ID}`;
+                const response = await fetch(url, {
+                    headers: {
+                        "Client-ID": CLIENT_ID,
+                        "Authorization": `Bearer ${ACCESS_TOKEN}`
+                    }
+                });
+
+                if (!response.ok) throw new Error("Failed to fetch data");
+
+                const data = await response.json();
+                updateViewerList(data.data);
+            } catch (error) {
+                console.error("Error fetching viewers:", error);
+                document.getElementById("viewerList").innerHTML = "Error fetching data.";
+            }
+        }
+
+        function updateViewerList(viewers) {
+            const viewerListDiv = document.getElementById("viewerList");
+            if (!viewers || viewers.length === 0) {
+                viewerListDiv.innerHTML = "No viewers detected.";
+                return;
+            }
+
+            viewerListDiv.innerHTML = `<strong>Current Viewers (${viewers.length}):</strong><br>` +
+                viewers.map(user => `• ${user.user_login}`).join("<br>");
+        }
+
+        fetchViewers(); // Initial Fetch
+        setInterval(fetchViewers, REFRESH_INTERVAL); // Auto-update every 30 seconds
+    </script>
+
+</body>
+</html>
