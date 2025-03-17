@@ -20,7 +20,9 @@ How To Get Token And Client ID:
 6) Now Click On The Blue Request Token!
 7) Enter Your Twitch Username And Email
 8) Check Your Email {Spam Folder Too}
-9) You Should Get A Email With Your Token And Client ID
+9) Copy The URL From The Box And Paste Into Browser
+10) Scroll Down To Everything Looks Good
+11) You Should Get A Email With Your Token And Client ID
 
 
 ---------------------------------------------------
