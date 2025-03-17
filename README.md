@@ -1,4 +1,4 @@
-Twitch Viewer List In HTM
+Twitch Viewer List In HTML Using Twitch API
 
 
 ------------
