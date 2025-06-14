@@ -1,5 +1,6 @@
 Twitch Viewer List In HTML Using Twitch API
 
+Step By Step Video Guide: https://youtu.be/CR7LHpdVEig
 
 ------------
 Requirements
